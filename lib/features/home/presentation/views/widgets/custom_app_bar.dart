@@ -9,26 +9,29 @@ class CustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Image.asset(
-          AssetsData.logo,
-          height: 30,
-          width: 75,
-        ),
-        const Spacer(),
-        InkWell(
-          borderRadius: BorderRadius.circular(38),
-          onTap: () {},
-          child: const Padding(
-            padding: EdgeInsets.only(top: 4.0, left: 4),
-            child: Icon(
-              FontAwesomeIcons.magnifyingGlass,
-              size: 25,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30.0),
+      child: Row(
+        children: [
+          Image.asset(
+            AssetsData.logo,
+            height: 30,
+            width: 75,
+          ),
+          const Spacer(),
+          InkWell(
+            borderRadius: BorderRadius.circular(38),
+            onTap: () {},
+            child: const Padding(
+              padding: EdgeInsets.only(top: 4.0, left: 4),
+              child: Icon(
+                FontAwesomeIcons.magnifyingGlass,
+                size: 25,
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
