@@ -1,8 +1,7 @@
-import 'package:bookly_app/constants.dart';
+import 'package:bookly_app/core/utils/assets.dart';
 import 'package:bookly_app/features/home/presentation/views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -43,7 +42,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
           builder: (context, _) => FadeTransition(
             opacity: sliderAnimation1,
             child: Center(
-              child: Image.asset(kLogo),
+              child: Image.asset(AssetData.testImage),
             ),
           ),
           animation: sliderAnimation2,
