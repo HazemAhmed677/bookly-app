@@ -42,7 +42,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
           builder: (context, _) => FadeTransition(
             opacity: sliderAnimation1,
             child: Center(
-              child: Image.asset(AssetData.testImage),
+              child: Image.asset(AssetsData.testImage),
             ),
           ),
           animation: sliderAnimation2,
