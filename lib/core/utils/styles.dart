@@ -4,17 +4,17 @@ import 'package:flutter/material.dart';
 abstract class Styles {
   static const textStyle14 = TextStyle(
     fontSize: 14,
-    fontWeight: FontWeight.normal,
+    fontFamily: kMotserraMedium,
   );
 
   static const textStyle16 = TextStyle(
     fontSize: 16,
-    fontWeight: FontWeight.w500,
+    fontFamily: kMotserraMedium,
   );
 
   static const textStyle18 = TextStyle(
     fontSize: 18,
-    fontWeight: FontWeight.w600,
+    fontFamily: kMotserraSemiBold,
   );
 
   static const textStyle20 = TextStyle(
@@ -24,7 +24,6 @@ abstract class Styles {
 
   static const textStyleForPrice = TextStyle(
     fontSize: 20,
-    fontFamily: kMotserra,
-    fontWeight: FontWeight.bold,
+    fontFamily: kMotserraBold,
   );
 }

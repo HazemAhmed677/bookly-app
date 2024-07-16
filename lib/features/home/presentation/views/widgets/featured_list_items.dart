@@ -15,7 +15,6 @@ class FeaturedListOfItems extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.only(left: 30.0),
         child: ListView.builder(
-          physics: const BouncingScrollPhysics(),
           clipBehavior: Clip.none,
           scrollDirection: Axis.horizontal,
           itemCount: 4,

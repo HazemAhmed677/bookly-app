@@ -1,5 +1,3 @@
-import 'package:bookly_app/constants.dart';
-import 'package:bookly_app/core/utils/assets.dart';
 import 'package:bookly_app/core/utils/styles.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/custom_app_bar.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/featured_list_items.dart';
@@ -14,34 +12,31 @@ class FetureadBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(
+        SizedBox(
           height: 48,
         ),
-        const CustomAppBar(),
-        const SizedBox(
+        CustomAppBar(),
+        SizedBox(
           height: 48,
         ),
-        const FeaturedListOfItems(),
-        const SizedBox(
+        FeaturedListOfItems(),
+        SizedBox(
           height: 51,
         ),
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30.0),
+          padding: EdgeInsets.symmetric(horizontal: 30.0),
           child: Text(
             'Best Seller',
-            style: Styles.textStyle18.copyWith(
-              fontFamily: kMotserra,
-              fontWeight: FontWeight.bold,
-            ),
+            style: Styles.textStyle18,
           ),
         ),
-        const SizedBox(
+        SizedBox(
           height: 20,
         ),
-        const FeaturedListViewOfBestSeller()
+        FeaturedListViewOfBestSeller()
       ],
     );
   }
