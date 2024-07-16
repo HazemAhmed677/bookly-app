@@ -1,3 +1,3 @@
 abstract class AssetsData {
-  static String testImage = 'assets/images/Logo.png';
+  static String logo = 'assets/images/Logo.png';
 }
