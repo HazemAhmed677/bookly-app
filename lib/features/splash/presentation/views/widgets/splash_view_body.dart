@@ -1,3 +1,4 @@
+import 'package:bookly_app/constants.dart';
 import 'package:flutter/material.dart';
 
 class SplashViewBody extends StatelessWidget {
@@ -5,6 +6,22 @@ class SplashViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Center(
+          child: Image.asset(kLogo),
+        ),
+        const SizedBox(
+          height: 4,
+        ),
+        const Text(
+          'Read free books',
+          style: TextStyle(
+            fontSize: 16,
+          ),
+        )
+      ],
+    );
   }
 }
