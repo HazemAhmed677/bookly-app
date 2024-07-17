@@ -10,7 +10,10 @@ class FeaturedListViewOfBestSeller extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 30.0),
+        padding: const EdgeInsets.only(
+          left: 30.0,
+          right: 10,
+        ),
         child: ListView.builder(
           padding: EdgeInsets.zero,
           itemCount: 4,

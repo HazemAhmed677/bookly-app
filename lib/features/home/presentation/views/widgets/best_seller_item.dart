@@ -1,4 +1,3 @@
-import 'package:bookly_app/constants.dart';
 import 'package:bookly_app/core/utils/assets.dart';
 import 'package:bookly_app/core/utils/styles.dart';
 import 'package:flutter/material.dart';
@@ -30,27 +29,32 @@ class BestSellerItem extends StatelessWidget {
         ),
         Container(
           margin: const EdgeInsets.only(left: 30),
-          width: width * 0.5,
+          width: width * 0.55,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-                'Harry Potter and the Goblet of fire',
+                'Harry Potter and the Goblet of Fire',
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: Styles.textStyle20,
               ),
-              const Text(
-                'J.K. Rowling',
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: Styles.textStyle14,
+              const Opacity(
+                opacity: 0.7,
+                child: Text(
+                  'J.K. Rowling',
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: Styles.textStyle14,
+                ),
               ),
               Row(
                 children: [
-                  const Text(
+                  Text(
                     '19.99 ',
-                    style: Styles.textStyleForPrice,
+                    style: Styles.textStyleForPrice.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   Text(
                     '€',
@@ -58,15 +62,20 @@ class BestSellerItem extends StatelessWidget {
                       fontSize: 14,
                     ),
                   ),
-                  const Spacer(),
+                  const Spacer(
+                    flex: 1,
+                  ),
                   const Text(
                     '⭐ 4.8 ',
                     style: Styles.textStyle16,
                   ),
-                  Text(
-                    '(2390)',
-                    style: Styles.textStyle14.copyWith(
-                      fontFamily: kMotserraRegular,
+                  Opacity(
+                    opacity: 0.55,
+                    child: Text(
+                      '(2390)',
+                      style: Styles.textStyle14.copyWith(
+                        fontWeight: FontWeight.normal,
+                      ),
                     ),
                   )
                 ],
