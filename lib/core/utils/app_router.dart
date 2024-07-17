@@ -1,3 +1,4 @@
+import 'package:bookly_app/features/home/presentation/views/book_details_view.dart';
 import 'package:bookly_app/features/home/presentation/views/home_view.dart';
 import 'package:bookly_app/features/splash/presentation/views/splash_view.dart';
 import 'package:flutter/material.dart';
@@ -12,14 +13,20 @@ class AppRouter {
     GoRoute(
       path: '/homeView',
       pageBuilder: (context, state) => CustommTransitionPage(
+        duration: 300,
         key: state.pageKey,
         child: const HomeView(),
       ),
     ),
-    // GoRoute(
-    //   path: '/bookDetails',
-    //   builder: (context,state)=> const BookDetails(),
-    // ),
+    GoRoute(
+      name: 'bookDetailsView',
+      path: '/bookDetails',
+      pageBuilder: (context, state) => CustommTransitionPage(
+        duration: 200,
+        key: state.pageKey,
+        child: const BookDetailsView(),
+      ),
+    ),
     // GoRoute(
     //   path: '/bookDetails',
     //   builder: (context,state)=> const SearchView(),
@@ -28,9 +35,12 @@ class AppRouter {
 }
 
 class CustommTransitionPage extends CustomTransitionPage<void> {
-  CustommTransitionPage({required LocalKey super.key, required super.child})
+  CustommTransitionPage(
+      {required LocalKey super.key,
+      required super.child,
+      required int duration})
       : super(
-          transitionDuration: const Duration(milliseconds: 300),
+          transitionDuration: Duration(milliseconds: duration),
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             return FadeTransition(
               opacity: animation,
