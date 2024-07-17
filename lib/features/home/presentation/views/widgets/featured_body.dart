@@ -12,31 +12,44 @@ class FetureadBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(
-          height: 48,
-        ),
-        CustomAppBar(),
-        SizedBox(
-          height: 48,
-        ),
-        FeaturedListOfItems(),
-        SizedBox(
-          height: 51,
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 30.0),
-          child: Text(
-            'Best Seller',
-            style: Styles.textStyle18,
+    return const CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(
+          child: SizedBox(
+            height: 48,
           ),
         ),
-        SizedBox(
-          height: 20,
+        SliverToBoxAdapter(
+          child: CustomAppBar(),
         ),
-        FeaturedListViewOfBestSeller()
+        SliverToBoxAdapter(
+          child: SizedBox(
+            height: 48,
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: FeaturedListOfItems(),
+        ),
+        SliverToBoxAdapter(
+          child: SizedBox(
+            height: 51,
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30.0),
+            child: Text(
+              'Best Seller',
+              style: Styles.textStyle18,
+            ),
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: SizedBox(
+            height: 20,
+          ),
+        ),
+        FeaturedListViewOfBestSeller(),
       ],
     );
   }
