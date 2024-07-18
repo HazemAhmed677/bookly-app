@@ -17,35 +17,38 @@ class CustomActionButton extends StatelessWidget {
   Widget build(BuildContext context) {
     bool flag = (background == Colors.white);
     return Expanded(
-      child: TextButton(
-        style: TextButton.styleFrom(
-          backgroundColor: background,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              topLeft: (flag) ? const Radius.circular(10) : Radius.zero,
-              bottomLeft: (flag) ? const Radius.circular(10) : Radius.zero,
-              topRight: (!flag) ? const Radius.circular(10) : Radius.zero,
-              bottomRight: (!flag) ? const Radius.circular(10) : Radius.zero,
+      child: SizedBox(
+        height: 50,
+        child: TextButton(
+          style: TextButton.styleFrom(
+            backgroundColor: background,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                topLeft: (flag) ? const Radius.circular(14) : Radius.zero,
+                bottomLeft: (flag) ? const Radius.circular(14) : Radius.zero,
+                topRight: (!flag) ? const Radius.circular(14) : Radius.zero,
+                bottomRight: (!flag) ? const Radius.circular(14) : Radius.zero,
+              ),
             ),
           ),
+          onPressed: () {},
+          child: (flag)
+              ? Text(
+                  text,
+                  style: Styles.textStyleForPrice.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: textColor,
+                  ),
+                )
+              : Text(
+                  text,
+                  style: Styles.textStyle16.copyWith(
+                    fontWeight: FontWeight.bold,
+                    fontFamily: kGiloryMedium,
+                    color: textColor,
+                  ),
+                ),
         ),
-        onPressed: () {},
-        child: (flag)
-            ? Text(
-                text,
-                style: Styles.textStyleForPrice.copyWith(
-                  fontWeight: FontWeight.bold,
-                  color: textColor,
-                ),
-              )
-            : Text(
-                text,
-                style: Styles.textStyle18.copyWith(
-                  fontWeight: FontWeight.bold,
-                  fontFamily: kGiloryMedium,
-                  color: textColor,
-                ),
-              ),
       ),
     );
   }
