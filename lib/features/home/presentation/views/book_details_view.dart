@@ -28,7 +28,7 @@ class BookDetailsView extends StatelessWidget {
                 ),
                 SuggestionBooksSection(),
                 SizedBox(
-                  height: 30,
+                  height: 40,
                 )
               ],
             ),

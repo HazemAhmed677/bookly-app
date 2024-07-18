@@ -1,5 +1,6 @@
 import 'package:bookly_app/features/home/presentation/views/book_details_view.dart';
 import 'package:bookly_app/features/home/presentation/views/home_view.dart';
+import 'package:bookly_app/features/search/presentation/views/search_view.dart';
 import 'package:bookly_app/features/splash/presentation/views/splash_view.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -27,13 +28,18 @@ abstract class AppRouter {
         child: const BookDetailsView(),
       ),
     ),
-    // GoRoute(
-    //   path: '/bookDetails',
-    //   builder: (context,state)=> const SearchView(),
-    // ),
+    GoRoute(
+      path: '/searchView',
+      pageBuilder: (context, state) => CustommTransitionPage(
+        duration: 200,
+        key: state.pageKey,
+        child: const SearchView(),
+      ),
+    ),
   ]);
 }
 
+//--------------------------------------------------------------
 class CustommTransitionPage extends CustomTransitionPage<void> {
   CustommTransitionPage(
       {required LocalKey super.key,
