@@ -1,4 +1,4 @@
-import 'package:bookly_app/core/utils/assets.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/book_item.dart';
 import 'package:flutter/material.dart';
 
 class FeaturedListOfItems extends StatelessWidget {
@@ -23,19 +23,7 @@ class FeaturedListOfItems extends StatelessWidget {
                 ? const EdgeInsets.only(right: 16)
                 : const EdgeInsets.only(right: 30),
             width: width * .4,
-            child: AspectRatio(
-              aspectRatio: 2.4 / 4,
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.red,
-                  image: DecorationImage(
-                    image: AssetImage(AssetsData.testImage),
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-            ),
+            child: const BookItem(),
           ),
         ),
       ),
