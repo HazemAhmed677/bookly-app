@@ -5,28 +5,35 @@ import 'package:flutter/material.dart';
 
 class BookDetailsView extends StatelessWidget {
   const BookDetailsView({super.key});
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(
-              height: 32,
+    return const Scaffold(
+      body: CustomScrollView(
+        slivers: [
+          SliverFillRemaining(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 32,
+                ),
+                CustomAppBarOfBookDetails(),
+                SizedBox(
+                  height: 32,
+                ),
+                BookDetailsSection(),
+                Expanded(
+                  child: SizedBox(
+                    height: 50,
+                  ),
+                ),
+                SuggestionBooksSection(),
+                SizedBox(
+                  height: 30,
+                )
+              ],
             ),
-            const CustomAppBarOfBookDetails(),
-            const SizedBox(
-              height: 32,
-            ),
-            const BookDetailsSection(),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.05,
-            ),
-            const SuggestionBooksSection()
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
