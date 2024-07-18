@@ -1,5 +1,6 @@
 import 'package:bookly_app/core/utils/assets.dart';
 import 'package:bookly_app/core/utils/styles.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/custom_feedback.dart';
 import 'package:flutter/material.dart';
 
 class BestSellerItem extends StatelessWidget {
@@ -65,19 +66,7 @@ class BestSellerItem extends StatelessWidget {
                   const Spacer(
                     flex: 1,
                   ),
-                  const Text(
-                    '⭐ 4.8 ',
-                    style: Styles.textStyle16,
-                  ),
-                  Opacity(
-                    opacity: 0.55,
-                    child: Text(
-                      '(2390)',
-                      style: Styles.textStyle14.copyWith(
-                        fontWeight: FontWeight.normal,
-                      ),
-                    ),
-                  )
+                  const CustomFeedBack()
                 ],
               ),
             ],
