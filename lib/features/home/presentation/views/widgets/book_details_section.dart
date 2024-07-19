@@ -1,12 +1,14 @@
 import 'package:bookly_app/constants.dart';
 import 'package:bookly_app/core/utils/styles.dart';
+import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/book_item.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/custom_action_button.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/custom_feedback.dart';
 import 'package:flutter/material.dart';
 
 class BookDetailsSection extends StatelessWidget {
-  const BookDetailsSection({super.key});
-
+  const BookDetailsSection({super.key, required this.bookModel});
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
@@ -15,14 +17,17 @@ class BookDetailsSection extends StatelessWidget {
         padding: EdgeInsets.symmetric(
           horizontal: width * 0.27,
         ),
-        // child: const BookItem(),
+        child: BookItem(
+          imageURL: bookModel.volumeInfo!.imageLinks!.thumbnail ?? '',
+        ),
       ),
       const SizedBox(
         height: 40,
       ),
-      const Text(
-        'The Jungle Book',
-        style: TextStyle(
+      Text(
+        bookModel.volumeInfo!.title!,
+        textAlign: TextAlign.center,
+        style: const TextStyle(
           fontFamily: kGtSectraFine,
           fontSize: 30,
           fontWeight: FontWeight.bold,
@@ -31,10 +36,10 @@ class BookDetailsSection extends StatelessWidget {
       const SizedBox(
         height: 6,
       ),
-      const Opacity(
+      Opacity(
         opacity: 0.7,
         child: Text(
-          'Rudyard Kipling',
+          bookModel.volumeInfo!.authors![0],
           style: Styles.textStyle18,
         ),
       ),
@@ -51,7 +56,7 @@ class BookDetailsSection extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CustomActionButton(
-              text: '19.99 €',
+              text: 'Free',
               background: Colors.white,
               textColor: Colors.black,
             ),

@@ -15,6 +15,11 @@ class BookItem extends StatelessWidget {
       child: CachedNetworkImage(
         imageUrl: imageURL,
         fit: BoxFit.fill,
+        errorWidget: (context, url, error) {
+          return const Center(
+            child: Icon(Icons.error),
+          );
+        },
       ),
     );
   }

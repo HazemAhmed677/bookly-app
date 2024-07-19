@@ -36,9 +36,10 @@ class CustomActionButton extends StatelessWidget {
               ? Text(
                   text,
                   style: Styles.textStyleForPrice.copyWith(
-                    fontWeight: FontWeight.bold,
-                    color: textColor,
-                  ),
+                      fontWeight: FontWeight.bold,
+                      color: textColor,
+                      fontFamily: kGiloryMedium,
+                      fontSize: 20),
                 )
               : Text(
                   text,
