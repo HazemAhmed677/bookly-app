@@ -31,7 +31,7 @@ class HomeRepoImpl extends HomeRepo {
   }
 
   @override
-  Future<Either<ServerFaluire, List<BookModel>>> bestSellerBooks() async {
+  Future<Either<ServerFaluire, List<BookModel>>> newestBooks() async {
     List<BookModel> books = [];
     try {
       var responseBody = await ApiService(dio: Dio()).get(
