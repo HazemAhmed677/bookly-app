@@ -11,13 +11,13 @@ class SearchViewBody extends StatelessWidget {
       padding: EdgeInsets.only(
         left: 20.0,
         right: 20,
-        top: 34,
+        top: 40,
       ),
       child: Column(
         children: [
           CustomTextField(),
           SizedBox(
-            height: 20,
+            height: 30,
           ),
           Expanded(
             child: ListViewOfSearchedBooks(),

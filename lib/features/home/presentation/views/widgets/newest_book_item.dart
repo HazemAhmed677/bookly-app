@@ -1,6 +1,6 @@
 import 'package:bookly_app/constants.dart';
 import 'package:bookly_app/core/utils/styles.dart';
-import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
+import 'package:bookly_app/core/models/book_model/book_model.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/custom_feedback.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/one_from_authers.dart';
 import 'package:flutter/material.dart';
@@ -27,8 +27,13 @@ class NewestItem extends StatelessWidget {
             child: AspectRatio(
               aspectRatio: 2.7 / 4,
               child: CachedNetworkImage(
-                imageUrl: bookModel.volumeInfo!.imageLinks!.thumbnail!,
+                imageUrl: bookModel.volumeInfo!.imageLinks?.thumbnail! ?? '',
                 fit: BoxFit.fill,
+                errorWidget: (context, url, error) {
+                  return const Center(
+                    child: Icon(Icons.error),
+                  );
+                },
               ),
             ),
           ),
@@ -45,14 +50,21 @@ class NewestItem extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
                 style: Styles.textStyle20,
               ),
-              OneFromAuthors(bookModel: bookModel, index: 0),
-              (bookModel.volumeInfo!.authors!.length > 1)
-                  ? OneFromAuthors(bookModel: bookModel, index: 1)
-                  : (bookModel.volumeInfo!.authors!.length > 2)
-                      ? OneFromAuthors(bookModel: bookModel, index: 2)
-                      : (bookModel.volumeInfo!.authors!.length > 3)
-                          ? OneFromAuthors(bookModel: bookModel, index: 3)
-                          : const SizedBox(),
+              (bookModel.volumeInfo!.authors != null)
+                  ? Column(
+                      children: [
+                        OneFromAuthors(bookModel: bookModel, index: 0),
+                        (bookModel.volumeInfo!.authors!.length > 1)
+                            ? OneFromAuthors(bookModel: bookModel, index: 1)
+                            : (bookModel.volumeInfo!.authors!.length > 2)
+                                ? OneFromAuthors(bookModel: bookModel, index: 2)
+                                : (bookModel.volumeInfo!.authors!.length > 3)
+                                    ? OneFromAuthors(
+                                        bookModel: bookModel, index: 3)
+                                    : const SizedBox(),
+                      ],
+                    )
+                  : const SizedBox(),
               Row(
                 children: [
                   Text(

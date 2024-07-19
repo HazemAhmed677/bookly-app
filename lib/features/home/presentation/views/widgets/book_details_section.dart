@@ -1,6 +1,6 @@
 import 'package:bookly_app/constants.dart';
 import 'package:bookly_app/core/utils/styles.dart';
-import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
+import 'package:bookly_app/core/models/book_model/book_model.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_item.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/custom_action_button.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/custom_feedback.dart';
@@ -40,13 +40,15 @@ class BookDetailsSection extends StatelessWidget {
       const SizedBox(
         height: 6,
       ),
-      Opacity(
-        opacity: 0.7,
-        child: Text(
-          bookModel.volumeInfo!.authors![0],
-          style: Styles.textStyle18,
-        ),
-      ),
+      (bookModel.volumeInfo!.authors != null)
+          ? Opacity(
+              opacity: 0.7,
+              child: Text(
+                bookModel.volumeInfo!.authors![0],
+                style: Styles.textStyle18,
+              ),
+            )
+          : const SizedBox(),
       const SizedBox(
         height: 16,
       ),
