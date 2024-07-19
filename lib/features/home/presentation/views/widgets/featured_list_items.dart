@@ -1,4 +1,5 @@
 import 'package:bookly_app/core/utils/app_router.dart';
+import 'package:bookly_app/core/widgets/shimmer_loading.dart';
 import 'package:bookly_app/features/home/presentation/manager/fetch_featured_books_cubit/fetch_featured_books_cubit.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_item.dart';
 import 'package:flutter/material.dart';
@@ -20,8 +21,13 @@ class FeaturedListOfItems extends StatelessWidget {
         child: BlocBuilder<FetchFeaturedBooksCubit, FetchFeaturedBooksState>(
           builder: (context, state) {
             if (state is FetchFeaturedBooksLoading) {
+              //*********************** */
+              // shimmmer widget
               return const Center(
-                child: CircularProgressIndicator(),
+                child: ShimmerLoading(
+                  widthArea: 0.4,
+                  hightArea: 0.2,
+                ),
               );
             } else if (state is FetchFeaturedBooksSuccess) {
               return ListView.builder(

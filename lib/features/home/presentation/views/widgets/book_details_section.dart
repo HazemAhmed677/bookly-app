@@ -18,7 +18,7 @@ class BookDetailsSection extends StatelessWidget {
           horizontal: width * 0.27,
         ),
         child: BookItem(
-          imageURL: bookModel.volumeInfo!.imageLinks!.thumbnail ?? '',
+          imageURL: bookModel.volumeInfo!.imageLinks?.thumbnail ?? '',
         ),
       ),
       const SizedBox(

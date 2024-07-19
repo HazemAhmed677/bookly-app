@@ -1,4 +1,5 @@
 import 'package:bookly_app/core/utils/app_router.dart';
+import 'package:bookly_app/core/widgets/shimmer_loading.dart';
 import 'package:bookly_app/features/home/presentation/manager/fetch_similar_books_cubit/fetch_similar_books_cubit.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_item.dart';
 import 'package:flutter/material.dart';
@@ -20,9 +21,7 @@ class SuggestedListView extends StatelessWidget {
         child: BlocBuilder<FetchSimilarBooksCubit, FetchSimilarBooksState>(
           builder: (context, state) {
             if (state is FetchSimilarBooksLoading) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
+              return const ShimmerLoading(widthArea: 0.22, hightArea: 0.2);
             } else if (state is FetchSimilarBooksSuccess) {
               return ListView.builder(
                 physics: const BouncingScrollPhysics(),
@@ -44,8 +43,9 @@ class SuggestedListView extends StatelessWidget {
                     },
                     child: BookItem(
                       flag: true,
-                      imageURL:
-                          state.books[index].volumeInfo!.imageLinks!.thumbnail!,
+                      imageURL: state
+                              .books[index].volumeInfo!.imageLinks?.thumbnail ??
+                          '',
                     ),
                   ),
                 ),

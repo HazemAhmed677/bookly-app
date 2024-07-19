@@ -1,3 +1,4 @@
+import 'package:bookly_app/core/widgets/shimmer_loading.dart';
 import 'package:bookly_app/features/home/presentation/manager/fetch_newest_books.dart/fetch_newest_books_cubit_cubit.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/newest_book_item.dart';
 import 'package:flutter/material.dart';
@@ -22,9 +23,13 @@ class _NewestBooksListViewState extends State<NewestBooksListView> {
     return BlocBuilder<FetchNewestBooksCubitCubit, FetchNewestBooksCubitState>(
       builder: (context, state) {
         if (state is FetchNewestBooksCubitLoading) {
-          return const SliverToBoxAdapter(
-              child: Center(
-            child: CircularProgressIndicator(),
+          return const SliverFillRemaining(
+              child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30.0),
+            child: ShimmerLoadingForVertical(
+              widthArea: 0.1,
+              hightArea: 0.2,
+            ),
           ));
         } else if (state is FetchNewestBooksCubitSuccess) {
           return SliverPadding(
