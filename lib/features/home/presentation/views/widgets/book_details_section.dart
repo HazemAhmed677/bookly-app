@@ -66,14 +66,18 @@ class BookDetailsSection extends StatelessWidget {
             ),
             CustomActionButton(
               onPressed: () async {
-                Uri url = Uri.parse(bookModel.volumeInfo!.previewLink!);
-                if (await canLaunchUrl(
-                  url,
-                )) {
-                  await launchUrl(url, mode: LaunchMode.externalApplication);
+                if (bookModel.volumeInfo!.previewLink != null) {
+                  Uri url = Uri.parse(bookModel.volumeInfo!.previewLink!);
+                  if (await canLaunchUrl(
+                    url,
+                  )) {
+                    await launchUrl(url, mode: LaunchMode.externalApplication);
+                  }
                 }
               },
-              text: 'Free preview',
+              text: (bookModel.volumeInfo!.previewLink == null)
+                  ? 'Not available'
+                  : 'Free preview',
               background: const Color(0xffEF8262),
               textColor: Colors.white,
             ),
