@@ -47,6 +47,7 @@ class _NewestBooksListViewState extends State<NewestBooksListView> {
                     setState(() {
                       isPushing = true;
                     });
+
                     await GoRouter.of(context)
                         .push('/bookDetails', extra: state.books[index]);
                     setState(() {
