@@ -1,54 +1,63 @@
 import 'package:bookly_app/constants.dart';
-import 'package:bookly_app/core/utils/assets.dart';
 import 'package:bookly_app/core/utils/styles.dart';
+import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/custom_feedback.dart';
+import 'package:bookly_app/features/home/presentation/views/widgets/one_from_authers.dart';
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class NewestItem extends StatelessWidget {
   const NewestItem({
     super.key,
+    required this.bookModel,
   });
-
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
+    double hight = MediaQuery.of(context).size.height;
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          height: 110,
-          width: 80,
-          decoration: BoxDecoration(
-            color: Colors.red,
+        SizedBox(
+          height: hight * 0.2,
+          child: ClipRRect(
             borderRadius: BorderRadius.circular(10),
-            image: DecorationImage(
-              image: AssetImage(
-                AssetsData.testImage,
+            child: AspectRatio(
+              aspectRatio: 2.5 / 4,
+              child: CachedNetworkImage(
+                imageUrl: bookModel.volumeInfo!.imageLinks!.thumbnail!,
+                fit: BoxFit.fill,
               ),
-              fit: BoxFit.fill,
             ),
           ),
         ),
         Container(
           margin: const EdgeInsets.only(left: 30),
-          width: width * 0.55,
+          width: width * 0.46,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Harry Potter and the Goblet of Fire',
+              Text(
+                bookModel.volumeInfo!.title!,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: Styles.textStyle20,
               ),
-              const Opacity(
-                opacity: 0.7,
-                child: Text(
-                  'J.K. Rowling',
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: Styles.textStyle14,
-                ),
+              Column(
+                children: [
+                  OneFromAuthors(bookModel: bookModel, index: 0),
+                  (bookModel.volumeInfo!.authors!.length > 1)
+                      ? OneFromAuthors(bookModel: bookModel, index: 1)
+                      : (bookModel.volumeInfo!.authors!.length > 2)
+                          ? OneFromAuthors(bookModel: bookModel, index: 2)
+                          : (bookModel.volumeInfo!.authors!.length > 3)
+                              ? OneFromAuthors(bookModel: bookModel, index: 3)
+                              : const Text(''),
+                ],
+              ),
+              SizedBox(
+                height: hight * 0.05,
               ),
               Row(
                 children: [
