@@ -37,12 +37,11 @@ class HomeRepoImpl extends HomeRepo {
   }
 
   @override
-  Future<Either<ServerFaluire, List<BookModel>>> newestBooks() async {
+  Future<Either<ServerFaluire, List<BookModel>>> fetchNewestBooks() async {
     List<BookModel> books = [];
     try {
       var responseBody = await apiService.get(
-          endpoint:
-              'Filtering=free-ebooks&Sorting=newest&q=subject:programming');
+          endpoint: 'Filtering=free-ebooks&Sorting=newest&q=programming');
       for (var element in responseBody['items']) {
         books.add(BookModel.fromMap(element));
       }
@@ -55,6 +54,35 @@ class HomeRepoImpl extends HomeRepo {
             statusCode: e.response?.statusCode));
       } else {
         return left(ServerFaluire('Oops, there somthing wrong'));
+      }
+    }
+  }
+
+  @override
+  Future<Either<ServerFaluire, List<BookModel>>> fetchSimilarBooks(
+      {required String category}) async {
+    List<BookModel> books = [];
+    try {
+      var responseBody = await apiService.get(
+          endpoint: 'Filtering=free-ebooks&q=subject:$category');
+      for (var element in responseBody['items']) {
+        books.add(BookModel.fromMap(element));
+      }
+      return right(books);
+    } catch (e) {
+      if (e is DioException) {
+        return left(
+          ServerFaluire.fromDioException(
+              dioExecption: e.type,
+              response: e.response,
+              statusCode: e.response?.statusCode),
+        );
+      } else {
+        return left(
+          ServerFaluire(
+            e.toString(),
+          ),
+        );
       }
     }
   }

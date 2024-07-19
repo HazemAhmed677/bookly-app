@@ -9,7 +9,7 @@ class FetchNewestBooksCubitCubit extends Cubit<FetchNewestBooksCubitState> {
   final HomeRepoImpl homeRepoImpl;
   Future<void> fetchNewestBooksCubit() async {
     emit(FetchNewestBooksCubitLoading());
-    var result = await homeRepoImpl.newestBooks();
+    var result = await homeRepoImpl.fetchNewestBooks();
     result.fold(
       (failure) {
         // will show  the error that I hundled in error folder
