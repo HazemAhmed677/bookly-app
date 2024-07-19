@@ -5,6 +5,7 @@ import 'package:bookly_app/features/home/presentation/views/widgets/book_item.da
 import 'package:bookly_app/features/home/presentation/views/widgets/custom_action_button.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/custom_feedback.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class BookDetailsSection extends StatelessWidget {
   const BookDetailsSection({super.key, required this.bookModel});
@@ -53,19 +54,27 @@ class BookDetailsSection extends StatelessWidget {
       const SizedBox(
         height: 35,
       ),
-      const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 30.0),
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 30.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CustomActionButton(
+            const CustomActionButton(
               text: 'Free',
               background: Colors.white,
               textColor: Colors.black,
             ),
             CustomActionButton(
+              onPressed: () async {
+                Uri url = Uri.parse(bookModel.volumeInfo!.previewLink!);
+                if (await canLaunchUrl(
+                  url,
+                )) {
+                  await launchUrl(url, mode: LaunchMode.externalApplication);
+                }
+              },
               text: 'Free preview',
-              background: Color(0xffEF8262),
+              background: const Color(0xffEF8262),
               textColor: Colors.white,
             ),
           ],

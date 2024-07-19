@@ -16,7 +16,8 @@ class HomeRepoImpl extends HomeRepo {
     List<BookModel> books = [];
     try {
       var responseBody = await apiService.get(
-          endpoint: 'Filtering=free-ebooks&q=subject:programming');
+        endpoint: 'Filtering=free-ebooks&q=programming',
+      );
       List<dynamic> itemsList = responseBody['items'];
 
       for (var element in itemsList) {
@@ -40,7 +41,8 @@ class HomeRepoImpl extends HomeRepo {
     List<BookModel> books = [];
     try {
       var responseBody = await apiService.get(
-          endpoint: 'Filtering=free-ebooks&Sorting=newest&q=programming');
+          endpoint:
+              'Filtering=free-ebooks&Sorting=newest&q=subject:programming');
       for (var element in responseBody['items']) {
         books.add(BookModel.fromMap(element));
       }

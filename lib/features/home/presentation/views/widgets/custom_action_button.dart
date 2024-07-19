@@ -8,11 +8,12 @@ class CustomActionButton extends StatelessWidget {
     required this.background,
     required this.textColor,
     required this.text,
+    this.onPressed,
   });
   final String text;
   final Color background;
   final Color textColor;
-
+  final Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     bool flag = (background == Colors.white);
@@ -31,7 +32,7 @@ class CustomActionButton extends StatelessWidget {
               ),
             ),
           ),
-          onPressed: () {},
+          onPressed: onPressed,
           child: (flag)
               ? Text(
                   text,
