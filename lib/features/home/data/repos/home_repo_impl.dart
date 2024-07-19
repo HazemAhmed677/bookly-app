@@ -7,12 +7,11 @@ import 'package:dio/dio.dart';
 
 class HomeRepoImpl extends HomeRepo {
   @override
-  Future<Either<ServerFaluire, List<BookModel>>> bestSellerBooks() async {
+  Future<Either<ServerFaluire, List<BookModel>>> fetchFeaturedBooks() async {
     List<BookModel> books = [];
     try {
-      var responseBody = await ApiService(dio: Dio()).get(
-          endpoint:
-              'https://www.googleapis.com/books/v1/volumes?q=programming');
+      var responseBody = await ApiService(dio: Dio())
+          .get(endpoint: 'Filtering=free-ebooks&q=subject:programming');
       for (var element in responseBody['items']) {
         books.add(BookModel.fromJson(element));
       }
@@ -30,7 +29,25 @@ class HomeRepoImpl extends HomeRepo {
   }
 
   @override
-  Future<Either<ServerFaluire, List<BookModel>>> fetchFeaturedBooks() {
-    throw UnimplementedError();
+  Future<Either<ServerFaluire, List<BookModel>>> bestSellerBooks() async {
+    List<BookModel> books = [];
+    try {
+      var responseBody = await ApiService(dio: Dio()).get(
+          endpoint:
+              'Filtering=free-ebooks&Sorting=newest&q=subject:programming');
+      for (var element in responseBody['items']) {
+        books.add(BookModel.fromJson(element));
+      }
+      return right(books);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFaluire.FromDioException(
+            dioExecption: e.type,
+            response: e.response,
+            statusCode: e.response?.statusCode));
+      } else {
+        return left(ServerFaluire('Oops, there somthing wrong'));
+      }
+    }
   }
 }
