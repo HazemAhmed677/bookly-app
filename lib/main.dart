@@ -1,6 +1,7 @@
 import 'package:bookly_app/constants.dart';
 import 'package:bookly_app/core/utils/api_service.dart';
 import 'package:bookly_app/core/utils/app_router.dart';
+import 'package:bookly_app/core/utils/service_locator.dart';
 import 'package:bookly_app/features/home/data/repos/home_repo_impl.dart';
 import 'package:bookly_app/features/home/presentation/manager/fetch_featured_books_cubit/fetch_featured_books_cubit.dart';
 import 'package:bookly_app/features/home/presentation/manager/fetch_newest_books.dart/fetch_newest_books_cubit_cubit.dart';
@@ -23,16 +24,17 @@ class BooklyApp extends StatelessWidget {
     // but this is not valid, using 2 objects of HomeRepoImpl and 2 of ApiService
     // so debendency injection principle solves this problem
     // it's just using sengleton patter
+    // get_it => creatr one inctance and locate (like listen step in cubit)
     return MultiBlocProvider(
       providers: [
         BlocProvider(
           create: (context) => FetchFeaturedBooksCubit(
-            homeRepoImpl: HomeRepoImpl(apiService: ApiService(dio: Dio())),
+            homeRepoImpl: getIt.get<HomeRepoImpl>(),
           ),
         ),
         BlocProvider(
           create: (context) => FetchNewestBooksCubitCubit(
-            homeRepoImpl: HomeRepoImpl(apiService: ApiService(dio: Dio())),
+            homeRepoImpl: getIt.get<HomeRepoImpl>(),
           ),
         ),
       ],
