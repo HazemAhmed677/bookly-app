@@ -17,8 +17,11 @@ class HomeRepoImpl extends HomeRepo {
     try {
       var responseBody = await apiService.get(
           endpoint: 'Filtering=free-ebooks&q=subject:programming');
-      for (var element in responseBody['items']) {
-        books.add(BookModel.fromJson(element));
+      List<dynamic> itemsList = responseBody['items'];
+
+      for (var element in itemsList) {
+        print(element);
+        books.add(BookModel.fromMap(element));
       }
       return right(books);
     } catch (e) {
@@ -28,7 +31,7 @@ class HomeRepoImpl extends HomeRepo {
             response: e.response,
             statusCode: e.response?.statusCode));
       } else {
-        return left(ServerFaluire('Oops, there somthing wrong'));
+        return left(ServerFaluire(e.toString()));
       }
     }
   }

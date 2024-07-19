@@ -5,7 +5,7 @@ import 'package:get_it/get_it.dart';
 // ignore: depend_on_referenced_packages
 import 'package:dio/dio.dart';
 
-var getIt = GetIt.instance;
+final getIt = GetIt.instance;
 void setup() {
   getIt.registerSingleton<ApiService>(
     ApiService(
