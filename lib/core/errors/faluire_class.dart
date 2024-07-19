@@ -1,3 +1,4 @@
+// ignore: depend_on_referenced_packages
 import 'package:dio/dio.dart';
 
 class ServerFaluire {
@@ -5,7 +6,7 @@ class ServerFaluire {
 
   ServerFaluire(this.errorMsg);
 
-  factory ServerFaluire.FromDioException(
+  factory ServerFaluire.fromDioException(
       {required DioExceptionType dioExecption,
       dynamic response,
       int? statusCode}) {
