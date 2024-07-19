@@ -8,12 +8,15 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
 class HomeRepoImpl extends HomeRepo {
+  final ApiService apiService;
+
+  HomeRepoImpl({required this.apiService});
   @override
   Future<Either<ServerFaluire, List<BookModel>>> fetchFeaturedBooks() async {
     List<BookModel> books = [];
     try {
-      var responseBody = await ApiService(dio: Dio())
-          .get(endpoint: 'Filtering=free-ebooks&q=subject:programming');
+      var responseBody = await apiService.get(
+          endpoint: 'Filtering=free-ebooks&q=subject:programming');
       for (var element in responseBody['items']) {
         books.add(BookModel.fromJson(element));
       }
@@ -34,7 +37,7 @@ class HomeRepoImpl extends HomeRepo {
   Future<Either<ServerFaluire, List<BookModel>>> newestBooks() async {
     List<BookModel> books = [];
     try {
-      var responseBody = await ApiService(dio: Dio()).get(
+      var responseBody = await apiService.get(
           endpoint:
               'Filtering=free-ebooks&Sorting=newest&q=subject:programming');
       for (var element in responseBody['items']) {
