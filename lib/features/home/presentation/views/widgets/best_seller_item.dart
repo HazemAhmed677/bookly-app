@@ -1,10 +1,11 @@
+import 'package:bookly_app/constants.dart';
 import 'package:bookly_app/core/utils/assets.dart';
 import 'package:bookly_app/core/utils/styles.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/custom_feedback.dart';
 import 'package:flutter/material.dart';
 
-class BestSellerItem extends StatelessWidget {
-  const BestSellerItem({
+class NewestItem extends StatelessWidget {
+  const NewestItem({
     super.key,
   });
 
@@ -52,15 +53,10 @@ class BestSellerItem extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    '19.99 ',
+                    'Free',
                     style: Styles.textStyleForPrice.copyWith(
                       fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text(
-                    '€',
-                    style: Styles.textStyleForPrice.copyWith(
-                      fontSize: 14,
+                      fontFamily: kMotserraRegular,
                     ),
                   ),
                   const Spacer(

@@ -44,7 +44,7 @@ class HomeRepoImpl extends HomeRepo {
           endpoint:
               'Filtering=free-ebooks&Sorting=newest&q=subject:programming');
       for (var element in responseBody['items']) {
-        books.add(BookModel.fromJson(element));
+        books.add(BookModel.fromMap(element));
       }
       return right(books);
     } catch (e) {

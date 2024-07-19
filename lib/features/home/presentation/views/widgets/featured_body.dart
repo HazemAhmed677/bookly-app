@@ -13,6 +13,7 @@ class FetureadBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const CustomScrollView(
+      physics: BouncingScrollPhysics(),
       slivers: [
         SliverToBoxAdapter(
           child: SizedBox(
@@ -39,7 +40,7 @@ class FetureadBody extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 30.0),
             child: Text(
-              'Best Seller',
+              'Newest Books',
               style: Styles.textStyle18,
             ),
           ),
@@ -49,7 +50,7 @@ class FetureadBody extends StatelessWidget {
             height: 20,
           ),
         ),
-        FeaturedListViewOfBestSeller(),
+        NewestBooksListView(),
       ],
     );
   }

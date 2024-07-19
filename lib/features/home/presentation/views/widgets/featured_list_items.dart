@@ -23,15 +23,18 @@ class FeaturedListOfItems extends StatelessWidget {
               );
             } else if (state is FetchFeaturedBooksSuccess) {
               return ListView.builder(
+                physics: const BouncingScrollPhysics(),
                 clipBehavior: Clip.none,
                 scrollDirection: Axis.horizontal,
-                itemCount: 6,
+                itemCount: state.books.length,
                 itemBuilder: (context, index) => Container(
-                  margin: (index < 5)
+                  margin: (index < (state.books.length - 1))
                       ? const EdgeInsets.only(right: 16)
                       : const EdgeInsets.only(right: 30),
                   width: (flag != null) ? width * 0.18 : width * .4,
                   child: BookItem(
+                    imageURL:
+                        state.books[index].volumeInfo!.imageLinks!.thumbnail!,
                     flag: flag,
                   ),
                 ),
@@ -39,7 +42,7 @@ class FeaturedListOfItems extends StatelessWidget {
             } else if (state is FetchFeaturedBooksFailure) {
               return Text(state.errorMsg);
             } else {
-              return Text('f');
+              return const Text('');
             }
           },
         ),
