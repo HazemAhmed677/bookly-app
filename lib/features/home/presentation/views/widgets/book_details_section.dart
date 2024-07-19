@@ -24,13 +24,16 @@ class BookDetailsSection extends StatelessWidget {
       const SizedBox(
         height: 40,
       ),
-      Text(
-        bookModel.volumeInfo!.title!,
-        textAlign: TextAlign.center,
-        style: const TextStyle(
-          fontFamily: kGtSectraFine,
-          fontSize: 30,
-          fontWeight: FontWeight.bold,
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+        child: Text(
+          bookModel.volumeInfo!.title!,
+          textAlign: TextAlign.center,
+          style: const TextStyle(
+            fontFamily: kGtSectraFine,
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
+          ),
         ),
       ),
       const SizedBox(

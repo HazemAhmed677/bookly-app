@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+// ignore: depend_on_referenced_packages
+import 'package:go_router/go_router.dart';
 
 class CustomAppBarOfBookDetails extends StatelessWidget {
   const CustomAppBarOfBookDetails({
@@ -18,7 +20,9 @@ class CustomAppBarOfBookDetails extends StatelessWidget {
             style: const ButtonStyle(
               tapTargetSize: MaterialTapTargetSize.shrinkWrap,
             ),
-            onPressed: () {},
+            onPressed: () {
+              GoRouter.of(context).pop();
+            },
             icon: const Icon(
               FontAwesomeIcons.xmark,
             ),

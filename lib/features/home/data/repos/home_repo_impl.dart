@@ -20,7 +20,6 @@ class HomeRepoImpl extends HomeRepo {
       List<dynamic> itemsList = responseBody['items'];
 
       for (var element in itemsList) {
-        print(element);
         books.add(BookModel.fromMap(element));
       }
       return right(books);

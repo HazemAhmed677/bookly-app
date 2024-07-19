@@ -35,7 +35,7 @@ class NewestItem extends StatelessWidget {
         ),
         Container(
           margin: const EdgeInsets.only(left: 30),
-          width: width * 0.46,
+          width: width * 0.50,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

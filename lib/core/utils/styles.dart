@@ -24,6 +24,6 @@ abstract class Styles {
   );
 
   static const textStyleForPrice = TextStyle(
-    fontSize: 18,
+    fontSize: 16,
   );
 }

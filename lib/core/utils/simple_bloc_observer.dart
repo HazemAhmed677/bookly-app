@@ -20,4 +20,10 @@ class SimpleBlocObserver extends BlocObserver {
     debugPrint(bloc.toString());
     super.onCreate(bloc);
   }
+
+  @override
+  void onTransition(Bloc bloc, Transition transition) {
+    debugPrint(bloc.toString());
+    super.onTransition(bloc, transition);
+  }
 }
