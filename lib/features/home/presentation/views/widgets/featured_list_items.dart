@@ -1,8 +1,11 @@
+import 'package:bookly_app/core/utils/app_router.dart';
 import 'package:bookly_app/features/home/presentation/manager/fetch_featured_books_cubit/fetch_featured_books_cubit.dart';
 import 'package:bookly_app/features/home/presentation/views/widgets/book_item.dart';
 import 'package:flutter/material.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_bloc/flutter_bloc.dart';
+// ignore: depend_on_referenced_packages
+import 'package:go_router/go_router.dart';
 
 class FeaturedListOfItems extends StatelessWidget {
   const FeaturedListOfItems({super.key, this.flag});
@@ -32,10 +35,19 @@ class FeaturedListOfItems extends StatelessWidget {
                       ? const EdgeInsets.only(right: 16)
                       : const EdgeInsets.only(right: 30),
                   width: (flag != null) ? width * 0.18 : width * .4,
-                  child: BookItem(
-                    imageURL:
-                        state.books[index].volumeInfo!.imageLinks!.thumbnail!,
-                    flag: flag,
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(
+                      20,
+                    ),
+                    onTap: () {
+                      GoRouter.of(context).push(AppRouter.kBookDetails,
+                          extra: state.books[index]);
+                    },
+                    child: BookItem(
+                      imageURL:
+                          state.books[index].volumeInfo!.imageLinks!.thumbnail!,
+                      flag: flag,
+                    ),
                   ),
                 ),
               );

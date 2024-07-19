@@ -8,6 +8,7 @@ import 'package:bookly_app/features/splash/presentation/views/splash_view.dart';
 import 'package:go_router/go_router.dart';
 
 abstract class AppRouter {
+  static const String kBookDetails = '/bookDetails';
   static final GoRouter router = GoRouter(routes: [
     GoRoute(
       path: '/',
@@ -22,7 +23,7 @@ abstract class AppRouter {
       ),
     ),
     GoRoute(
-      path: '/bookDetails',
+      path: kBookDetails,
       pageBuilder: (context, state) => CustommTransitionPage(
         duration: 200,
         key: state.pageKey,
