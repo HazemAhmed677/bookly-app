@@ -8,13 +8,16 @@ import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
 class SearchRepoImpl extends SearchRepo {
+  final ApiService apiService;
+
+  SearchRepoImpl({required this.apiService});
   @override
-  Future<Either<ServerFaluire, List<BookModel>>> fetchNewestBooks(
+  Future<Either<ServerFaluire, List<BookModel>>> fetchSearchedBooks(
       {required String title}) async {
     List<BookModel> books = [];
     try {
-      var responseBody = await ApiService(dio: Dio())
-          .get(endpoint: 'Filtering=free-ebooks&q=title');
+      var responseBody =
+          await apiService.get(endpoint: 'Filtering=free-ebooks&q=$title');
       for (var ele in responseBody['items']) {
         books.add(BookModel.fromMap(ele));
       }

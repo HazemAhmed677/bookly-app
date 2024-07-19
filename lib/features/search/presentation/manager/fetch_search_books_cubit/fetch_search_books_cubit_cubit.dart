@@ -8,9 +8,9 @@ class FetchSearchBooksCubitCubit extends Cubit<FetchSearchBooksCubitState> {
   FetchSearchBooksCubitCubit({required this.searchRepoImpl})
       : super(FetchSearchBooksCubitInitial());
   final SearchRepoImpl searchRepoImpl;
-  Future<void> fetchFeaturedBooks({required String title}) async {
+  Future<void> fetchSearchedBooks({required String title}) async {
     emit(FetchSearchBooksCubitLoading());
-    var result = await searchRepoImpl.fetchNewestBooks(title: title);
+    var result = await searchRepoImpl.fetchSearchedBooks(title: title);
     result.fold(
       (failure) {
         // will show  the error that I hundled in error folder
