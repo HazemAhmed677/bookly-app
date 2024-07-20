@@ -24,6 +24,7 @@ class _ListViewOfSearchedBooksState extends State<ListViewOfSearchedBooks> {
       builder: (context, state) {
         if (state is FetchSearchBooksCubitSuccess) {
           return ListView.builder(
+            physics: const BouncingScrollPhysics(),
             padding: EdgeInsets.zero,
             itemCount: state.books.length,
             itemBuilder: (context, index) => Padding(

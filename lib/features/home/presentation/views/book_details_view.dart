@@ -20,6 +20,7 @@ class _BookDetailsViewState extends State<BookDetailsView> {
       body: CustomScrollView(
         slivers: [
           SliverFillRemaining(
+            hasScrollBody: false,
             child: Column(
               children: [
                 const SizedBox(
@@ -27,14 +28,14 @@ class _BookDetailsViewState extends State<BookDetailsView> {
                 ),
                 const CustomAppBarOfBookDetails(),
                 const SizedBox(
-                  height: 32,
+                  height: 36,
                 ),
                 BookDetailsSection(
                   bookModel: widget.bookModel,
                 ),
                 const Expanded(
                   child: SizedBox(
-                    height: 50,
+                    height: 10,
                   ),
                 ),
                 SuggestionBooksSection(

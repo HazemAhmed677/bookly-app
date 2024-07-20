@@ -1,3 +1,4 @@
+import 'package:bookly_app/core/utils/styles.dart';
 import 'package:bookly_app/features/search/presentation/manager/fetch_search_books_cubit/fetch_search_books_cubit_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -19,6 +20,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
   Widget build(BuildContext context) {
     return TextField(
       clipBehavior: Clip.hardEdge,
+      cursorColor: Colors.lightBlueAccent,
+      style: Styles.textStyle18,
       onSubmitted: (value) {
         if (value != '') {
           BlocProvider.of<FetchSearchBooksCubitCubit>(context)
@@ -39,7 +42,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           },
           icon: const Icon(
             FontAwesomeIcons.magnifyingGlass,
-            size: 18,
+            size: 20,
             color: Colors.lightBlueAccent,
           ),
         ),

@@ -16,7 +16,7 @@ class OneFromAuthors extends StatelessWidget {
     return Opacity(
       opacity: 0.7,
       child: Text(
-        bookModel.volumeInfo!.authors?[0] ?? '',
+        bookModel.volumeInfo!.authors?[0] ?? 'jj',
         overflow: TextOverflow.ellipsis,
         style: Styles.textStyle14,
       ),
