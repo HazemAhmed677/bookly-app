@@ -48,6 +48,7 @@ class ShimmerLoadingForVertical extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
+      padding: EdgeInsets.zero,
       scrollDirection: Axis.vertical,
       itemCount: 10,
       itemBuilder: (context, index) => SizedBox(
