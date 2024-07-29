@@ -1,16 +1,24 @@
-# bookly_app
-
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<h1>E-Book App</h1>
+<hr><p>A comprehensive e-book platform offering a vast collection of free books. Discover new reads through personalized recommendations, advanced search, and category exploration. Enjoy a seamless user experience with intuitive navigation and robust error handling.</p><h2>Technologies Used</h2>
+<hr><ul>
+<li>Flutter</li>
+</ul><ul>
+<li>MVVM architecture</li>
+</ul><ul>
+<li>Bloc/Cubit State Management</li>
+</ul><ul>
+<li>REST API</li>
+</ul><h2>Features</h2>
+<hr><ul>
+<li>Personalized book suggestions</li>
+</ul><ul>
+<li>Advanced search functionality to discover new books.</li>
+</ul><ul>
+<li>Extensive free book catalog</li>
+</ul><ul>
+<li>Intuitive navigation and user-friendly interface.</li>
+</ul><ul>
+<li>Efficient error handling</li>
+</ul>
+</ul><h2>Project Status</h2>
+<hr><p>Completed</p>
