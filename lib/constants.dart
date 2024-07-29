@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const kPrimaryColor = Color(0xff150025);
+const kPrimaryColor = Color.fromARGB(255, 70, 97, 7);
 const String kGtSectraFine = 'GT Sectra Fine';
 
 const String kMotserraRegular = 'Montserrat-Regular';

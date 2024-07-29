@@ -10,7 +10,9 @@ class FetchSearchBooksCubitCubit extends Cubit<FetchSearchBooksCubitState> {
   final SearchRepoImpl searchRepoImpl;
   Future<void> fetchSearchedBooks({required String title}) async {
     emit(FetchSearchBooksCubitLoading());
-    var result = await searchRepoImpl.fetchSearchedBooks(title: title);
+    var result = await searchRepoImpl.fetchSearchedBooks(
+      title: title,
+    );
     result.fold(
       (failure) {
         // will show  the error that I hundled in error folder
@@ -19,7 +21,11 @@ class FetchSearchBooksCubitCubit extends Cubit<FetchSearchBooksCubitState> {
         ));
       },
       (listOfBooks) {
-        emit(FetchSearchBooksCubitSuccess(books: listOfBooks));
+        emit(
+          FetchSearchBooksCubitSuccess(
+            books: listOfBooks,
+          ),
+        );
       },
     );
   }

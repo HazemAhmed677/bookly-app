@@ -19,6 +19,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
+      autofocus: true,
       clipBehavior: Clip.hardEdge,
       cursorColor: Colors.lightBlueAccent,
       style: Styles.textStyle18,

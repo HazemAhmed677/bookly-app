@@ -1,5 +1,6 @@
 import 'package:bookly_app/core/utils/assets.dart';
 import 'package:flutter/material.dart';
+// ignore: depend_on_referenced_packages
 import 'package:go_router/go_router.dart';
 
 class SplashViewBody extends StatefulWidget {
@@ -81,7 +82,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
       duration: const Duration(milliseconds: 950),
     );
     sliderAnimation2 =
-        Tween<Offset>(begin: const Offset(0, 8), end: Offset.zero)
+        Tween<Offset>(begin: const Offset(0, 7), end: Offset.zero)
             .animate(animationController2);
     animationController2.forward();
   }
